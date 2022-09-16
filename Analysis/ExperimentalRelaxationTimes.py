@@ -84,6 +84,7 @@ def t1_t2_relaxations(data_from_DynamicCenter,field,coeff,outputP,author,info,in
     peak_dictionary["INFO"]["COEFFICIENTS"]=coeff
     peak_dictionary["INFO"]["OUTPUT_POINTS"]=outputP
     peak_dictionary["INFO"]["INFO"]=info
+    peak_dictionary["INFO"]["INCREMENTS"]=increments
     
         
     return peak_dictionary
@@ -136,25 +137,47 @@ def compare_spectra(*files):
                                            ])) 
         
         
-        if len(reference['peaks'])>len(file['peaks']) or len(reference['peaks'])==len(file['peaks']):
-            reference_keys=list(reference['peaks'])
-            for i,file_peak in enumerate(file['peaks']):
-                key=np.where(distances[:,i]==min(distances[:,i]))[0][0]
+
+        reference_keys=list(reference['peaks'])
+        for i,file_peak in enumerate(file['peaks']):
+            key=np.where(distances[:,i]==min(distances[:,i]))[0][0]
+            if np.where(distances[key,:]==min(distances[key,:]))[0][0]==i:
                 relaxation_times[reference_keys[key]]["file"+str(k)]={}
                 relaxation_times[reference_keys[key]]["file"+str(k)]["ppm"]=file['peaks'][file_peak]["ppm"]
                 relaxation_times[reference_keys[key]]["file"+str(k)]["T1"]=-1/file['peaks'][file_peak]["fit"][0][0]
-                relaxation_times[reference_keys[key]]["file"+str(k)]["COEFFICIENTS"]=  file["INFO"]["COEFFICIENTS"]
-                relaxation_times[reference_keys[key]]["file"+str(k)]["OUTPUT_POINTS"]=  file["INFO"]["OUTPUT_POINTS"]
-                
-        if len(reference['peaks'])<len(file['peaks']):  
-            file_keys=list(file['peaks'])
-            for i,ref_peak in enumerate(reference['peaks']):
-                key=np.where(distances[i,:]==min(distances[i,:]))[0][0]
-                relaxation_times[ref_peak]["file"+str(k)]={}
-                relaxation_times[ref_peak]["file"+str(k)]["ppm"]=file['peaks'][file_keys[key]]["ppm"]
-                relaxation_times[ref_peak]["file"+str(k)]["T1"]=-1/file['peaks'][file_keys[key]]["fit"][0][0]
-                relaxation_times[ref_peak]["file"+str(k)]["COEFFICIENTS"]=  file["INFO"]["COEFFICIENTS"]
-                relaxation_times[ref_peak]["file"+str(k)]["OUTPUT_POINTS"]=  file["INFO"]["OUTPUT_POINTS"]
-            
-    
+                relaxation_times[reference_keys[key]]["file"+str(k)]["COEFFICIENTS"]=file["INFO"]["COEFFICIENTS"]
+                relaxation_times[reference_keys[key]]["file"+str(k)]["OUTPUT_POINTS"]=file["INFO"]["OUTPUT_POINTS"]
+
+             
+
+           
     return relaxation_times
+    
+    
+def plot_data(comparison,coeffs,outputs):
+    keys=["REFERENCE"]
+    for i in range(len(coeffs)*len(outputs)):
+        keys.append("file"+str(i))
+
+    for file in keys:
+        x_axis=[]
+        y_axis=[]
+        for peak in comparison:
+            if file in comparison[peak]:
+                x_axis.append(int(peak))
+                y_axis.append(comparison[peak][file]["T1"])
+                if int(comparison[peak][file]["COEFFICIENTS"])==0 and int(comparison[peak][file]["OUTPUT_POINTS"])==0:
+                    refe=file
+                else:
+                    refe=-20
+        if refe==file:
+            plt.plot(x_axis, y_axis,'o',markersize=15)
+        else:
+            plt.plot(x_axis, y_axis,'o',markersize=5)
+
+    fig = plt.gcf()
+    fig.set_size_inches(18.5, 10.5)
+    plt.xlabel('Peak')
+    plt.ylabel('T1')
+    plt.show()
+    
