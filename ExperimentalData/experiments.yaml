@@ -1,0 +1,47 @@
+600 MHz:
+  Tobbi_COR15A_G68A_0.35mM_17mM_Na-P_buffer_September2022:
+    T1:
+      AUTHOR:
+      - Ricky Nencini
+      - ricky.nencini@helsinki.fi
+      COEFF:
+      - 32
+      - 64
+      CORRECT:
+      - 0
+      - 0
+      INCREMENTS: 250
+      INFO: Tobbi_COR15A_G68A_0.35mM_17mM_Na-P_buffer_September2022, experiment 110
+      OUTPUTS:
+      - 0
+      - 2
+      - 8
+      - 32
+      - 128
+      PATH: /home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/600MHz/Tobbi_COR15A_G68A_0.35mM_17mM_Na-P_buffer_September2022/T1/experiment_110/
+      PREFIX: T1_cor15A_G68A_
+  Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022:
+    T1:
+      AUTHOR:
+      - Ricky Nencini
+      - ricky.nencini@helsinki.fi
+      COEFF:
+      - 2
+      - 8
+      - 32
+      - 64
+      CORRECT:
+      - 225.94126
+      - 225.92114
+      INCREMENTS: 223
+      INFO: Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022, experiment
+        110
+      OUTPUTS:
+      - 0
+      - 2
+      - 8
+      - 32
+      - 128
+      PATH: /home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/600MHz/Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022/T1/experiment_110/
+      PREFIX: T1_
+850 MHz: {}
