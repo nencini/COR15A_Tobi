@@ -31,8 +31,8 @@
       - 32
       - 64
       CORRECT:
-      - 225.94126
-      - 225.92114
+      - 0
+      - 0
       INCREMENTS: 223
       INFO: Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022, experiment
         110
@@ -44,4 +44,70 @@
       - 128
       PATH: /home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/600MHz/Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022/T1/experiment_110/
       PREFIX: T1_
+    T2:
+      AUTHOR:
+      - Ricky Nencini
+      - ricky.nencini@helsinki.fi
+      COEFF:
+      - 2
+      - 8
+      - 32
+      - 64
+      CORRECT:
+      - 0
+      - 0
+      INCREMENTS: 300
+      INFO: Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022, experiment
+        120
+      OUTPUTS:
+      - 0
+      - 2
+      - 8
+      - 32
+      - 128
+      PATH: /home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/600MHz/Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample2_September2022/T2/experiment_120/DynamicCenter/
+      PREFIX: T2_
+  Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample4_October2022:
+    T1:
+      AUTHOR:
+      - Ricky Nencini
+      - ricky.nencini@helsinki.fi
+      COEFF:
+      - 32
+      - 64
+      CORRECT:
+      - 0
+      - 0
+      INCREMENTS: 300
+      INFO: Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample4_October2022, experiment
+        110
+      OUTPUTS:
+      - 0
+      - 2
+      - 8
+      - 32
+      - 128
+      PATH: /home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/600MHz/Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample4_October2022/T1/experiment_110/DynamicCenter/
+      PREFIX: T1_cor15A_wt_
+    T2:
+      AUTHOR:
+      - Ricky Nencini
+      - ricky.nencini@helsinki.fi
+      COEFF:
+      - 32
+      - 64
+      CORRECT:
+      - 0
+      - 0
+      INCREMENTS: 300
+      INFO: Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample4_October2022, experiment
+        120
+      OUTPUTS:
+      - 0
+      - 2
+      - 8
+      - 32
+      - 128
+      PATH: /home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/600MHz/Tobbi_COR15A_wt_0.9mM_20mM_Na-P_buffer_sample4_October2022/T2/experiment_120/DynamicCenter/
+      PREFIX: T2_cor15A_wt_
 850 MHz: {}

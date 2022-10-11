@@ -1211,7 +1211,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: &id001
     - Ricky Nencini
     - ricky.nencini@helsinki.fi
@@ -2554,7 +2554,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 2
@@ -3895,7 +3895,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 2
@@ -5236,7 +5236,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 2
@@ -6577,7 +6577,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 2
@@ -7918,7 +7918,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 2
@@ -9299,7 +9299,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 8
@@ -10680,7 +10680,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 8
@@ -12061,7 +12061,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 8
@@ -13442,7 +13442,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 8
@@ -14823,7 +14823,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 8
@@ -16224,7 +16224,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 32
@@ -17625,7 +17625,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 32
@@ -19026,7 +19026,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 32
@@ -20427,7 +20427,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 32
@@ -21828,7 +21828,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 32
@@ -23269,7 +23269,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 64
@@ -24710,7 +24710,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 64
@@ -26151,7 +26151,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 64
@@ -27592,7 +27592,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 64
@@ -29033,7 +29033,7 @@
   - 1.5
   - 1.9
   INFO:
-    ANALYZED: '2022-09-26'
+    ANALYZED: '2022-10-11'
     AUTHOR: *id001
     FIELD: 600 MHz
     COEFFICIENTS: 64

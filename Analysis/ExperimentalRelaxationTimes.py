@@ -34,6 +34,9 @@ def t1_t2_relaxations(data_from_DynamicCenter,field,coeff,outputP,author,info,in
                 if "Mixing time [s]:" in line:
                     mixing_times=np.array(line.split()[3:])
                     mixing_times = mixing_times.astype('float64')
+                elif "Time [s]:" in line:
+                    mixing_times=np.array(line.split()[2:])
+                    mixing_times = mixing_times.astype('float64')
                 elif "Peak name" in line or "SECTION:" in line:
                     pass
                 else:
@@ -208,7 +211,7 @@ def plot_data(comparison,coeffs,outputs,highlight):
 
     fig = plt.gcf()
     fig.set_size_inches(18.5, 10.5)
-    plt.xlabel('Peak')
+    plt.xlabel('Reference Peak')
     plt.ylabel('T1')
     plt.show()
 
@@ -393,24 +396,33 @@ def process_hetNoe(file1,file2,Nfactor,maxDist,image=None,imageDim=None):
     return hetNoe, peak_dictionary1, peak_dictionary2
                     
 
-def plot_fit_of_peaks(highlight,*results):
+def plot_fit_of_peaks(highlight,comparison,*results):
     for result in results:
         if result["INFO"]["COEFFICIENTS"]==highlight[0] and result["INFO"]["OUTPUT_POINTS"]==highlight[1]:
-            for peak in result["peaks"]:
-                print("Peak",peak)
+            fig = plt.gcf()
+            height=int(math.ceil(len(result["peaks"])/5))*4
+            fig.set_size_inches(20, height)
+            for i,peak in enumerate(result["peaks"]):
+                #print("Peak",peak)
+                ax = fig.add_subplot(int(math.ceil(len(result["peaks"])/5)),5,i+1)
                 x_fit_data=np.linspace(result['mixing_times'][0],result['mixing_times'][-1],1000)
                 y_fit_data=np.exp(x_fit_data*result["peaks"][peak]['fit'][0][0])*np.exp(result["peaks"][peak]['fit'][0][1])
-                plt.plot(result['mixing_times'],result["peaks"][peak]['experiment'],"o")
-                plt.plot(x_fit_data,y_fit_data,"-")
-                plt.show()
+                ref_peak=convert_peak_number_to_reference(peak,highlight,comparison)
+                if ref_peak==None:
+                   ref_peak="None"
+                ax.set_title("Peak "+peak+ ", ref "+ref_peak)
+                ax.plot(result['mixing_times'],result["peaks"][peak]['experiment'],"o")
+                ax.plot(x_fit_data,y_fit_data,"-")
+            plt.show()
               
               
               
 def add_exp_data(field,name,exp,author,path,prefix,info,increments,correct,coeffs,outputs):
     with open("/home/nenciric/Documents/git/COR15A_Tobi/ExperimentalData/experiments.yaml") as yaml_file:
         experiments = yaml.load(yaml_file, Loader=yaml.FullLoader)
-
-    experiments[field][name]={}
+    
+    if name not in experiments[field]:
+        experiments[field][name]={}
     experiments[field][name][exp]={}
     experiments[field][name][exp]["AUTHOR"]=author
     experiments[field][name][exp]["PATH"]=path
@@ -439,3 +451,92 @@ def add_exp_data(field,name,exp,author,path,prefix,info,increments,correct,coeff
         print("")
         
     return experiments
+    
+    
+#added 11/10/2022    
+def check_grouping_for_LP_t1t2(outputs,coeffs,comparison):
+    
+    fig = plt.gcf()
+    height=5*int(math.ceil((len(outputs)*len(coeffs)+1)/3))
+    fig.set_size_inches(18.5, height)
+    plt.tick_params(axis='both', which='major', labelsize=16)
+    plt.rcParams["figure.figsize"] = [18.5, height]
+
+    
+    pos=1
+    highlight=[0,0]
+    ##########################################
+    """Making this part as a subfunction does not work while called inside of a function, 
+    works in the main code. Same code repeats in the below part"""
+    ##########################################
+    ax = fig.add_subplot(int(math.ceil((len(outputs)*len(coeffs)+1)/3)),3,pos)
+        
+
+    if (highlight[0]==comparison["1"]['REFERENCE']["COEFFICIENTS"] and highlight[1]==comparison["1"]['REFERENCE']["OUTPUT_POINTS"]):
+        ax.set_title("REFER: Coef: "+str(highlight[0])+", Out: "+str(highlight[1]),fontsize=15)
+    else:
+        ax.set_title("Coef: "+str(highlight[0])+", Out: "+str(highlight[1]),fontsize=15)
+        
+    #ax.set_xlabel("H [ppm]",fontsize=10)
+    #ax.set_ylabel("N [ppm]",fontsize=10)
+
+    ax.invert_xaxis()
+    ax.invert_yaxis()
+       
+    for i,peak in enumerate(comparison):
+        ax.plot(float(comparison[peak]['REFERENCE']["ppm"][1]), float(comparison[peak]['REFERENCE']["ppm"][0]),'o',markersize=10,color="red")
+
+    for i,peak in enumerate(comparison):
+        for specra in comparison[peak]:
+            if comparison[peak][specra]["COEFFICIENTS"]==highlight[0] and comparison[peak][specra]["OUTPUT_POINTS"]==highlight[1]:
+                ax.plot(float(comparison[peak][specra]["ppm"][1]), float(comparison[peak][specra]["ppm"][0]),'o',markersize=5,color="blue")
+
+    ############################################
+    
+    for ind,coe in enumerate(coeffs):
+        for jnd,out in enumerate(outputs):
+            highlight=[coe,out]
+            pos=(len(outputs))*ind+(jnd+1)+1
+            
+            
+            ax = fig.add_subplot(int(math.ceil((len(outputs)*len(coeffs)+1)/3)),3,pos)
+        
+
+            if (highlight[0]==comparison["1"]['REFERENCE']["COEFFICIENTS"] and highlight[1]==comparison["1"]['REFERENCE']["OUTPUT_POINTS"]):
+                ax.set_title("REFER: Coef: "+str(highlight[0])+", Out: "+str(highlight[1]),fontsize=15)
+            else:
+                ax.set_title("Coef: "+str(highlight[0])+", Out: "+str(highlight[1]),fontsize=15)
+
+            ax.set_xlabel("H [ppm]",fontsize=10)
+            ax.set_ylabel("N [ppm]",fontsize=10)
+
+            ax.invert_xaxis()
+            ax.invert_yaxis()
+
+            for i,peak in enumerate(comparison):
+                ax.plot(float(comparison[peak]['REFERENCE']["ppm"][1]), float(comparison[peak]['REFERENCE']["ppm"][0]),'o',markersize=10,color="red")
+
+            for i,peak in enumerate(comparison):
+                for specra in comparison[peak]:
+                    if comparison[peak][specra]["COEFFICIENTS"]==highlight[0] and comparison[peak][specra]["OUTPUT_POINTS"]==highlight[1]:
+                        ax.plot(float(comparison[peak][specra]["ppm"][1]), float(comparison[peak][specra]["ppm"][0]),'o',markersize=5,color="blue")
+
+
+    plt.show()
+    
+    
+## added 11/10/2022   
+def convert_peak_number_from_reference(peak,highlight,comparison):
+    for spectra in comparison[peak]:
+        if (comparison[peak][spectra]['COEFFICIENTS']==highlight[0]
+            and comparison[peak][spectra]['OUTPUT_POINTS']==highlight[1]):
+            return comparison[peak][spectra]["PEAK_NAME"]
+
+
+def convert_peak_number_to_reference(peak,highlight,comparison):
+    for ref_peak in comparison:
+        for spectra in comparison[ref_peak]:
+            if (comparison[ref_peak][spectra]['COEFFICIENTS']==highlight[0]
+                and comparison[ref_peak][spectra]['OUTPUT_POINTS']==highlight[1]
+                and comparison[ref_peak][spectra]["PEAK_NAME"]==peak):
+                return ref_peak
